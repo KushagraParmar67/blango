@@ -3,9 +3,12 @@ from blog.models import Post
 from blog.forms import CommentForm
 from django.utils import timezone
 import logging
+from django.views.decorators.cache import cache_page
+from django.views.decorators.vary import vary_on_headers
 # Create your views here.
 
 logger = logging.getLogger(__name__)
+
 
 def index(request):
   posts = Post.objects.filter(published_at__lte=timezone.now())
