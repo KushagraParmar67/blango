@@ -94,7 +94,19 @@ class Dev(Configuration):
         "rest_framework.authentication.BasicAuthentication",
         "rest_framework.authentication.SessionAuthentication",
         "rest_framework.authentication.TokenAuthentication",
-      ]
+      ],
+      "DEFAULT_THROTTLE_CLASSES":[
+        "blog.api.throttling.AnonSustainedThrottle",
+        "blog.api.throttling.AnonBrustThrottle",
+        "blog.api.throttling.UserSustainedThrottle",
+        "blog.api.throttling.UserBrustThrottle",
+      ],
+      "DEFAULT_THROTTLE_RATES":{
+        "anon_sustained":"500/day",
+        "anon_brust":"10/minute",
+        "user_sustained":"5000/day",
+        "user_brust":"100/minute",
+      }
     }
     SITE_ID = 1
     ACCOUNT_USER_MODEL_USERNAME_FIELD = None
