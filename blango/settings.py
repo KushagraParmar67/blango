@@ -83,6 +83,7 @@ class Dev(Configuration):
         'rest_framework',
         'rest_framework.authtoken',
         'drf_yasg',
+        "django_filters",
 
 
     ]
@@ -106,7 +107,14 @@ class Dev(Configuration):
         "anon_brust":"10/minute",
         "user_sustained":"5000/day",
         "user_brust":"100/minute",
-      }
+      },
+      "DEFAULT_PAGINATION_CLASSES":"rest_framework.pagination.PageNumberPagination",
+      "PAGE_SIZE":100,
+    "DEFAULT_FILTER_BACKENDS":[
+        "django_filters.rest_framework.DjangoFilterBackend",
+        "rest_framework.filters.OrderingFilter"
+    ],
+
     }
     SITE_ID = 1
     ACCOUNT_USER_MODEL_USERNAME_FIELD = None
