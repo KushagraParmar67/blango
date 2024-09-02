@@ -8,6 +8,13 @@
     <div class="col">
         {% include "blog/post-byline.html" %}
     </div>
+    {% if post.hero_image %}
+    {% row %}
+        {% col %}
+            <img class="img-fluid" src="{{ post.hero_image.url }}">
+        {% endcol %}
+    {% endrow %}
+{% endif %}
 {% endrow %}
 {% row %}
     <div class="col">
@@ -15,6 +22,7 @@
     </div>
 {% endrow %}
 {% include "blog/post-comments.html" %}
+
 {% if post.author.profile %}
     {% row %}
         {% col %}
